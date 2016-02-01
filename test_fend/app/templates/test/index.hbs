@@ -1,0 +1,7 @@
+<h2>Route Test</h2>
+    {{#each model as |test|}}
+        <li class="completed">
+            <input type="checkbox" class="toggle">
+            <label>{{test.title}}</label><button class="destroy"></button>
+        </li>
+    {{/each}}

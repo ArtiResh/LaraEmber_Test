@@ -102,6 +102,15 @@ define('test-fend/tests/helpers/start-app.jshint', ['exports'], function (export
     assert.ok(true, 'helpers/start-app.js should pass jshint.');
   });
 });
+define('test-fend/tests/models/test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/test.js should pass jshint.');
+  });
+});
 define('test-fend/tests/router.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -109,6 +118,15 @@ define('test-fend/tests/router.jshint', ['exports'], function (exports) {
   QUnit.test('router.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'router.js should pass jshint.');
+  });
+});
+define('test-fend/tests/routes/test/index.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes/test');
+  QUnit.test('routes/test/index.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/test/index.js should pass jshint.');
   });
 });
 define('test-fend/tests/test-helper', ['exports', 'test-fend/tests/helpers/resolver', 'ember-qunit'], function (exports, _testFendTestsHelpersResolver, _emberQunit) {
@@ -122,6 +140,49 @@ define('test-fend/tests/test-helper.jshint', ['exports'], function (exports) {
   QUnit.test('test-helper.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'test-helper.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/models/test-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('test', 'Unit | Model | test', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('test-fend/tests/unit/models/test-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/test-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/test-test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/routes/test/index-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:test/index', 'Unit | Route | test/index', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('test-fend/tests/unit/routes/test/index-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes/test');
+  QUnit.test('unit/routes/test/index-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/test/index-test.js should pass jshint.');
   });
 });
 /* jshint ignore:start */

@@ -75,15 +75,33 @@ define('test-fend/initializers/export-application-global', ['exports', 'ember', 
     initialize: initialize
   };
 });
+define('test-fend/models/test', ['exports', 'ember-data'], function (exports, _emberData) {
+    exports['default'] = _emberData['default'].Model.extend({
+        title: _emberData['default'].attr('string'),
+        text_news: _emberData['default'].attr('string'),
+        url: _emberData['default'].attr('string'),
+        id: _emberData['default'].attr('number'),
+        created_at: _emberData['default'].attr('string')
+    });
+});
 define('test-fend/router', ['exports', 'ember', 'test-fend/config/environment'], function (exports, _ember, _testFendConfigEnvironment) {
 
   var Router = _ember['default'].Router.extend({
     location: _testFendConfigEnvironment['default'].locationType
   });
 
-  Router.map(function () {});
+  Router.map(function () {
+    this.route('test', function () {});
+  });
 
   exports['default'] = Router;
+});
+define('test-fend/routes/test/index', ['exports', 'ember'], function (exports, _ember) {
+    exports['default'] = _ember['default'].Route.extend({
+        model: function model() {
+            return this.store.findAll('test');
+        }
+    });
 });
 define("test-fend/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -137,6 +155,116 @@ define("test-fend/templates/application", ["exports"], function (exports) {
     };
   })());
 });
+define("test-fend/templates/test/index", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.3.0",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 2,
+              "column": 4
+            },
+            "end": {
+              "line": 7,
+              "column": 4
+            }
+          },
+          "moduleName": "test-fend/templates/test/index.hbs"
+        },
+        isEmpty: false,
+        arity: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("        ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("li");
+          dom.setAttribute(el1, "class", "completed");
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("input");
+          dom.setAttribute(el2, "type", "checkbox");
+          dom.setAttribute(el2, "class", "toggle");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n            ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("label");
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2, "class", "destroy");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1, 3]), 0, 0);
+          return morphs;
+        },
+        statements: [["content", "test.title", ["loc", [null, [5, 19], [5, 33]]]]],
+        locals: ["test"],
+        templates: []
+      };
+    })();
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["multiple-nodes", "wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 0
+          }
+        },
+        "moduleName": "test-fend/templates/test/index.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("h2");
+        var el2 = dom.createTextNode("Route Test");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 2, 2, contextualElement);
+        dom.insertBoundary(fragment, null);
+        return morphs;
+      },
+      statements: [["block", "each", [["get", "model", ["loc", [null, [2, 12], [2, 17]]]]], [], 0, null, ["loc", [null, [2, 4], [7, 13]]]]],
+      locals: [],
+      templates: [child0]
+    };
+  })());
+});
 /* jshint ignore:start */
 
 /* jshint ignore:end */
@@ -163,7 +291,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+422175be"});
+  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+4fd14f1c"});
 }
 
 /* jshint ignore:end */
