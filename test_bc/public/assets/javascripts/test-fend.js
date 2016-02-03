@@ -82,7 +82,6 @@ define('test-fend/initializers/export-application-global', ['exports', 'ember', 
 });
 define('test-fend/models/test', ['exports', 'ember-data'], function (exports, _emberData) {
     exports['default'] = _emberData['default'].Model.extend({
-        test_id: _emberData['default'].attr("number"),
         title: _emberData['default'].attr('string'),
         text: _emberData['default'].attr('string')
     });
@@ -94,28 +93,27 @@ define('test-fend/router', ['exports', 'ember', 'test-fend/config/environment'],
   });
 
   Router.map(function () {
-    this.route('test');
+    this.route('test', { path: 'ember/test' }, function () {
+      this.route('test', { path: "ember/test/:id_test" });
+    });
   });
 
   exports['default'] = Router;
 });
-define('test-fend/routes/index', ['exports', 'ember'], function (exports, _ember) {
-        exports['default'] = _ember['default'].Route.extend({
-                /*    beforeModel: function() {
-                        this.transitionTo('test.index');
-                    }*/
-        });
-});
 define('test-fend/routes/test/index', ['exports', 'ember'], function (exports, _ember) {
     exports['default'] = _ember['default'].Route.extend({
-
         model: function model() {
-            return this.store.find('test');
+            return this.store.findAll('test');
         }
     });
 });
+define('test-fend/routes/test/test', ['exports', 'ember'], function (exports, _ember) {
+  exports['default'] = _ember['default'].Route.extend({});
+});
 define('test-fend/serializers/application', ['exports', 'ember-data'], function (exports, _emberData) {
-  exports['default'] = _emberData['default'].RESTSerializer.extend({});
+    exports['default'] = _emberData['default'].RESTSerializer.extend({
+        primaryKey: 'id_test'
+    });
 });
 define("test-fend/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -279,6 +277,52 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
     };
   })());
 });
+define("test-fend/templates/test/test", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 0
+          }
+        },
+        "moduleName": "test-fend/templates/test/test.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(1);
+        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [["content", "outlet", ["loc", [null, [1, 0], [1, 10]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 /* jshint ignore:start */
 
 /* jshint ignore:end */
@@ -305,7 +349,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+f6c2acc2"});
+  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+a75999ea"});
 }
 
 /* jshint ignore:end */

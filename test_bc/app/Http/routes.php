@@ -11,26 +11,14 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-/*Route::get('{data?}', function()
-{
-    return View::make('app');
-})->where('data', '.*');*/
-
-
-
-//Route::get('api/test', 'IndexController@index');
-
 Route::group(['prefix' => 'api'], function() {
-    Route::get('tests', 'IndexController@index');
+    Route::resource('tests', 'IndexController@index');
 //    Route::post('test', 'IndexController@store');
 //    Route::get('test/{id}', 'IndexController@show');
 //    Route::put('test/{id}', 'IndexController@update');
 });
 
-Route::get('{data?}', function()
+Route::get('ember/{data?}', function()
 {
     return View::make('app');
 })->where('data', '.*');

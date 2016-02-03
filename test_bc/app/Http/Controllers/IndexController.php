@@ -15,12 +15,12 @@ class IndexController extends Controller
         try {
             $statusCode = 200;
             $response = [
-                'test' => []
+                'tests' => []
             ];
             $tests = App\Index::take(6)->get();
             foreach ($tests as $item) {
-                $response['test'][] = [
-                    'id' => $item->id,
+                $response['tests'][] = [
+                    'id_test' => $item->id_test,
                     'title' => $item->title,
                     'text' => $item->text,
                 ];
@@ -30,7 +30,7 @@ class IndexController extends Controller
         }
         finally{
             //        return response()->json(compact('test'));
-            return response()->json(array($response,$statusCode));
+            return response()->json($response);
         }
     }
 }
