@@ -138,15 +138,6 @@ define('test-fend/tests/routes/test/index.jshint', ['exports'], function (export
     assert.ok(true, 'routes/test/index.js should pass jshint.');
   });
 });
-define('test-fend/tests/routes/test/test.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint - routes/test');
-  QUnit.test('routes/test/test.js should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'routes/test/test.js should pass jshint.');
-  });
-});
 define('test-fend/tests/serializers/application.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -232,27 +223,6 @@ define('test-fend/tests/unit/routes/test/index-test.jshint', ['exports'], functi
   QUnit.test('unit/routes/test/index-test.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/test/index-test.js should pass jshint.');
-  });
-});
-define('test-fend/tests/unit/routes/test/test-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
-
-  (0, _emberQunit.moduleFor)('route:test/test', 'Unit | Route | test/test', {
-    // Specify the other units that are required for this test.
-    // needs: ['controller:foo']
-  });
-
-  (0, _emberQunit.test)('it exists', function (assert) {
-    var route = this.subject();
-    assert.ok(route);
-  });
-});
-define('test-fend/tests/unit/routes/test/test-test.jshint', ['exports'], function (exports) {
-  'use strict';
-
-  QUnit.module('JSHint - unit/routes/test');
-  QUnit.test('unit/routes/test/test-test.js should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'unit/routes/test/test-test.js should pass jshint.');
   });
 });
 define('test-fend/tests/unit/serializers/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {

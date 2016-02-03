@@ -1,7 +1,29 @@
 <h2>Route Test</h2>
-    {{#each model as |test|}}
-        <li class="completed">
-            <input type="checkbox" class="toggle">
-            <label>{{test.title}}</label><button class="destroy"></button>
-        </li>
-    {{/each}}
+
+    {{#if model.length}}
+    <table class="table">
+    <caption>Расходы:  <span class="badge">{{model.length}}</span></caption>
+    <thead>
+    	<tr>
+    		<th>#</th>
+    		<th>Наименование</th>
+    		<th>Стоимость</th>
+    		<th></th>
+    	</tr>
+    </thead>
+    <tbody>
+    	{{#each model as |test index|}}
+    		<tr>
+    			<td>{{index}}</td>
+    			<td>{{test.title}}</td>
+    			<td>{{test.text}}</td>
+    			<td><button {{action 'deletePrice' test.id}} type="submit" class="btn btn-danger btn-xs">Удалить</button></td>
+    		</tr>
+    	{{/each}}
+    </tbody>
+    </table>
+    {{else}}
+    	{{alert-panel title="Внимание!" body="База пуста, срочно примите меры по наполнению!"}}
+    {{/if}}
+
+    {{outlet}}
