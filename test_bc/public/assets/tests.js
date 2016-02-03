@@ -1,3 +1,12 @@
+define('test-fend/tests/adapters/application.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - adapters');
+  QUnit.test('adapters/application.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'adapters/application.js should pass jshint.');
+  });
+});
 define('test-fend/tests/app.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -102,6 +111,15 @@ define('test-fend/tests/helpers/start-app.jshint', ['exports'], function (export
     assert.ok(true, 'helpers/start-app.js should pass jshint.');
   });
 });
+define('test-fend/tests/models/test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/test.js should pass jshint.');
+  });
+});
 define('test-fend/tests/router.jshint', ['exports'], function (exports) {
   'use strict';
 
@@ -109,6 +127,33 @@ define('test-fend/tests/router.jshint', ['exports'], function (exports) {
   QUnit.test('router.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'router.js should pass jshint.');
+  });
+});
+define('test-fend/tests/routes/test/index.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes/test');
+  QUnit.test('routes/test/index.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/test/index.js should pass jshint.');
+  });
+});
+define('test-fend/tests/routes/test/test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - routes/test');
+  QUnit.test('routes/test/test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/test/test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/serializers/application.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - serializers');
+  QUnit.test('serializers/application.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'serializers/application.js should pass jshint.');
   });
 });
 define('test-fend/tests/test-helper', ['exports', 'test-fend/tests/helpers/resolver', 'ember-qunit'], function (exports, _testFendTestsHelpersResolver, _emberQunit) {
@@ -122,6 +167,117 @@ define('test-fend/tests/test-helper.jshint', ['exports'], function (exports) {
   QUnit.test('test-helper.js should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'test-helper.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/adapters/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('adapter:application', 'Unit | Adapter | application', {
+    // Specify the other units that are required for this test.
+    // needs: ['serializer:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var adapter = this.subject();
+    assert.ok(adapter);
+  });
+});
+define('test-fend/tests/unit/adapters/application-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/adapters');
+  QUnit.test('unit/adapters/application-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/adapters/application-test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/models/test-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('test', 'Unit | Model | test', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var model = this.subject();
+    // let store = this.store();
+    assert.ok(!!model);
+  });
+});
+define('test-fend/tests/unit/models/test-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/test-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/models/test-test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/routes/test/index-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:test/index', 'Unit | Route | test/index', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('test-fend/tests/unit/routes/test/index-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes/test');
+  QUnit.test('unit/routes/test/index-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/test/index-test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/routes/test/test-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('route:test/test', 'Unit | Route | test/test', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('test-fend/tests/unit/routes/test/test-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes/test');
+  QUnit.test('unit/routes/test/test-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/test/test-test.js should pass jshint.');
+  });
+});
+define('test-fend/tests/unit/serializers/application-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleForModel)('application', 'Unit | Serializer | application', {
+    // Specify the other units that are required for this test.
+    needs: ['serializer:application']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it serializes records', function (assert) {
+    var record = this.subject();
+
+    var serializedRecord = record.serialize();
+
+    assert.ok(serializedRecord);
+  });
+});
+define('test-fend/tests/unit/serializers/application-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/serializers');
+  QUnit.test('unit/serializers/application-test.js should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/serializers/application-test.js should pass jshint.');
   });
 });
 /* jshint ignore:start */

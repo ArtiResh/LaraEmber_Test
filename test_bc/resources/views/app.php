@@ -21,10 +21,6 @@
 <script src="assets/javascripts/vendor.js"></script>
 <script src="assets/javascripts/test-fend.js"></script>
 
-<?
-var_dump(gettype($data));
-?>
-
 
 </body>
 </html>

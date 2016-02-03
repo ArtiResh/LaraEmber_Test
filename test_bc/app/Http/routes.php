@@ -11,16 +11,17 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-/*Route::get('{data?}', function()
+Route::group(['prefix' => 'api'], function() {
+    Route::resource('tests', 'IndexController@index');
+//    Route::post('test', 'IndexController@store');
+//    Route::get('test/{id}', 'IndexController@show');
+//    Route::put('test/{id}', 'IndexController@update');
+});
+
+Route::get('ember/{data?}', function()
 {
     return View::make('app');
-})->where('data', '.*');*/
-
-Route::get('{data?}', 'IndexController@index');
-
+})->where('data', '.*');
 
 /*
 |--------------------------------------------------------------------------
