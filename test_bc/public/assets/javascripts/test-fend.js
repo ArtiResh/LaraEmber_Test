@@ -3,6 +3,11 @@
 
 /* jshint ignore:end */
 
+define('test-fend/adapters/application', ['exports', 'ember-data'], function (exports, _emberData) {
+    exports['default'] = _emberData['default'].RESTAdapter.extend({
+        namespace: 'api'
+    });
+});
 define('test-fend/app', ['exports', 'ember', 'ember/resolver', 'ember/load-initializers', 'test-fend/config/environment'], function (exports, _ember, _emberResolver, _emberLoadInitializers, _testFendConfigEnvironment) {
 
   var App = undefined;
@@ -77,11 +82,9 @@ define('test-fend/initializers/export-application-global', ['exports', 'ember', 
 });
 define('test-fend/models/test', ['exports', 'ember-data'], function (exports, _emberData) {
     exports['default'] = _emberData['default'].Model.extend({
+        test_id: _emberData['default'].attr("number"),
         title: _emberData['default'].attr('string'),
-        text_news: _emberData['default'].attr('string'),
-        url: _emberData['default'].attr('string'),
-        id: _emberData['default'].attr('number'),
-        created_at: _emberData['default'].attr('string')
+        text: _emberData['default'].attr('string')
     });
 });
 define('test-fend/router', ['exports', 'ember', 'test-fend/config/environment'], function (exports, _ember, _testFendConfigEnvironment) {
@@ -91,17 +94,28 @@ define('test-fend/router', ['exports', 'ember', 'test-fend/config/environment'],
   });
 
   Router.map(function () {
-    this.route('test', function () {});
+    this.route('test');
   });
 
   exports['default'] = Router;
 });
+define('test-fend/routes/index', ['exports', 'ember'], function (exports, _ember) {
+        exports['default'] = _ember['default'].Route.extend({
+                /*    beforeModel: function() {
+                        this.transitionTo('test.index');
+                    }*/
+        });
+});
 define('test-fend/routes/test/index', ['exports', 'ember'], function (exports, _ember) {
     exports['default'] = _ember['default'].Route.extend({
+
         model: function model() {
-            return this.store.findAll('test');
+            return this.store.find('test');
         }
     });
+});
+define('test-fend/serializers/application', ['exports', 'ember-data'], function (exports, _emberData) {
+  exports['default'] = _emberData['default'].RESTSerializer.extend({});
 });
 define("test-fend/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -291,7 +305,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+4fd14f1c"});
+  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+f6c2acc2"});
 }
 
 /* jshint ignore:end */
