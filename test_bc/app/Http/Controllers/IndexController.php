@@ -17,10 +17,10 @@ class IndexController extends Controller
             $response = [
                 'tests' => []
             ];
-            $tests = App\Index::take(6)->get();
+            $tests = App\Index::all();
             foreach ($tests as $item) {
                 $response['tests'][] = [
-                    'id_test' => $item->id_test,
+                    'id_test' => $item->id,
                     'title' => $item->title,
                     'text' => $item->text,
                 ];
@@ -32,5 +32,8 @@ class IndexController extends Controller
             //        return response()->json(compact('test'));
             return response()->json($response);
         }
+    }
+    public function delete($item_id){
+        DB::table('books')->where('id', '=', "$item_id")->delete();
     }
 }

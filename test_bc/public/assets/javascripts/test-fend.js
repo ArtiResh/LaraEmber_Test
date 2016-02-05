@@ -34,6 +34,22 @@ define('test-fend/components/app-version', ['exports', 'ember-cli-app-version/co
     name: name
   });
 });
+define('test-fend/components/table-item', ['exports', 'ember'], function (exports, _ember) {
+    exports['default'] = _ember['default'].Component.extend({
+        tagName: 'tr',
+        actions: {
+            deleteItem: function deleteItem(id) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "api/tests/" + id);
+                xhr.send();
+                //console.log(this);
+                //this.get('targetObject.model').then(function(item){
+                //    item.destroyRecord();
+                //});
+            }
+        }
+    });
+});
 define('test-fend/controllers/array', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller;
 });
@@ -99,12 +115,19 @@ define('test-fend/router', ['exports', 'ember', 'test-fend/config/environment'],
 
   exports['default'] = Router;
 });
-define('test-fend/routes/test/index', ['exports', 'ember'], function (exports, _ember) {
+define('test-fend/routes/application', ['exports', 'ember'], function (exports, _ember) {
     exports['default'] = _ember['default'].Route.extend({
         model: function model() {
             return this.store.findAll('test');
         }
     });
+});
+define('test-fend/routes/test/index', ['exports', 'ember'], function (exports, _ember) {
+        exports['default'] = _ember['default'].Route.extend({
+                /*    model(){
+                        return this.store.findAll('test');
+                    }*/
+        });
 });
 define('test-fend/serializers/application', ['exports', 'ember-data'], function (exports, _emberData) {
     exports['default'] = _emberData['default'].RESTSerializer.extend({
@@ -285,6 +308,86 @@ define("test-fend/templates/application", ["exports"], function (exports) {
     };
   })());
 });
+define("test-fend/templates/components/table-item", ["exports"], function (exports) {
+  exports["default"] = Ember.HTMLBars.template((function () {
+    return {
+      meta: {
+        "fragmentReason": {
+          "name": "missing-wrapper",
+          "problems": ["multiple-nodes", "wrong-type"]
+        },
+        "revision": "Ember@2.3.0",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 0
+          }
+        },
+        "moduleName": "test-fend/templates/components/table-item.hbs"
+      },
+      isEmpty: false,
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("    			");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("td");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n    			");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("td");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n    			");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("td");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n    			");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("td");
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "type", "submit");
+        dom.setAttribute(el2, "class", "btn btn-danger btn-xs");
+        var el3 = dom.createTextNode("Удалить");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [7, 0]);
+        var morphs = new Array(5);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1]), 0, 0);
+        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [3]), 0, 0);
+        morphs[2] = dom.createMorphAt(dom.childAt(fragment, [5]), 0, 0);
+        morphs[3] = dom.createElementMorph(element0);
+        morphs[4] = dom.createMorphAt(fragment, 9, 9, contextualElement);
+        return morphs;
+      },
+      statements: [["content", "index", ["loc", [null, [1, 11], [1, 20]]]], ["content", "item.title", ["loc", [null, [2, 11], [2, 25]]]], ["content", "item.text", ["loc", [null, [3, 11], [3, 24]]]], ["element", "action", ["deleteItem", ["get", "item.id", ["loc", [null, [4, 41], [4, 48]]]]], [], ["loc", [null, [4, 19], [4, 50]]]], ["content", "yield", ["loc", [null, [5, 0], [5, 9]]]]],
+      locals: [],
+      templates: []
+    };
+  })());
+});
 define("test-fend/templates/test/index", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -300,7 +403,7 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
                 "column": 5
               },
               "end": {
-                "line": 22,
+                "line": 17,
                 "column": 5
               }
             },
@@ -312,55 +415,20 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
           hasRendered: false,
           buildFragment: function buildFragment(dom) {
             var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode("    		");
+            var el1 = dom.createTextNode("    	      ");
             dom.appendChild(el0, el1);
-            var el1 = dom.createElement("tr");
-            var el2 = dom.createTextNode("\n    			");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("td");
-            var el3 = dom.createComment("");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n    			");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("td");
-            var el3 = dom.createComment("");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n    			");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("td");
-            var el3 = dom.createComment("");
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n    			");
-            dom.appendChild(el1, el2);
-            var el2 = dom.createElement("td");
-            var el3 = dom.createElement("button");
-            dom.setAttribute(el3, "type", "submit");
-            dom.setAttribute(el3, "class", "btn btn-danger btn-xs");
-            var el4 = dom.createTextNode("Удалить");
-            dom.appendChild(el3, el4);
-            dom.appendChild(el2, el3);
-            dom.appendChild(el1, el2);
-            var el2 = dom.createTextNode("\n    		");
-            dom.appendChild(el1, el2);
+            var el1 = dom.createComment("");
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n");
             dom.appendChild(el0, el1);
             return el0;
           },
           buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-            var element0 = dom.childAt(fragment, [1]);
-            var element1 = dom.childAt(element0, [7, 0]);
-            var morphs = new Array(4);
-            morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 0, 0);
-            morphs[1] = dom.createMorphAt(dom.childAt(element0, [3]), 0, 0);
-            morphs[2] = dom.createMorphAt(dom.childAt(element0, [5]), 0, 0);
-            morphs[3] = dom.createElementMorph(element1);
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
             return morphs;
           },
-          statements: [["content", "index", ["loc", [null, [17, 11], [17, 20]]]], ["content", "test.title", ["loc", [null, [18, 11], [18, 25]]]], ["content", "test.text", ["loc", [null, [19, 11], [19, 24]]]], ["element", "action", ["deletePrice", ["get", "test.id", ["loc", [null, [20, 42], [20, 49]]]]], [], ["loc", [null, [20, 19], [20, 51]]]]],
+          statements: [["inline", "table-item", [], ["item", ["subexpr", "@mut", [["get", "test", ["loc", [null, [16, 29], [16, 33]]]]], [], []], "index", ["subexpr", "@mut", [["get", "index", ["loc", [null, [16, 40], [16, 45]]]]], [], []], "model", ["subexpr", "@mut", [["get", "model", ["loc", [null, [16, 52], [16, 57]]]]], [], []]], ["loc", [null, [16, 11], [16, 59]]]]],
           locals: ["test", "index"],
           templates: []
         };
@@ -376,7 +444,7 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
               "column": 4
             },
             "end": {
-              "line": 25,
+              "line": 20,
               "column": 4
             }
           },
@@ -455,13 +523,13 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element2 = dom.childAt(fragment, [1]);
+          var element0 = dom.childAt(fragment, [1]);
           var morphs = new Array(2);
-          morphs[0] = dom.createMorphAt(dom.childAt(element2, [1, 1]), 0, 0);
-          morphs[1] = dom.createMorphAt(dom.childAt(element2, [5]), 1, 1);
+          morphs[0] = dom.createMorphAt(dom.childAt(element0, [1, 1]), 0, 0);
+          morphs[1] = dom.createMorphAt(dom.childAt(element0, [5]), 1, 1);
           return morphs;
         },
-        statements: [["content", "model.length", ["loc", [null, [5, 43], [5, 59]]]], ["block", "each", [["get", "model", ["loc", [null, [15, 13], [15, 18]]]]], [], 0, null, ["loc", [null, [15, 5], [22, 14]]]]],
+        statements: [["content", "model.length", ["loc", [null, [5, 43], [5, 59]]]], ["block", "each", [["get", "model", ["loc", [null, [15, 13], [15, 18]]]]], [], 0, null, ["loc", [null, [15, 5], [17, 14]]]]],
         locals: [],
         templates: [child0]
       };
@@ -474,11 +542,11 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
           "loc": {
             "source": null,
             "start": {
-              "line": 25,
+              "line": 20,
               "column": 4
             },
             "end": {
-              "line": 27,
+              "line": 22,
               "column": 4
             }
           },
@@ -503,7 +571,7 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
           morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
           return morphs;
         },
-        statements: [["inline", "alert-panel", [], ["title", "Внимание!", "body", "База пуста, срочно примите меры по наполнению!"], ["loc", [null, [26, 5], [26, 92]]]]],
+        statements: [["inline", "alert-panel", [], ["title", "Внимание!", "body", "База пуста, срочно примите меры по наполнению!"], ["loc", [null, [21, 5], [21, 92]]]]],
         locals: [],
         templates: []
       };
@@ -522,7 +590,7 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 30,
+            "line": 25,
             "column": 0
           }
         },
@@ -556,7 +624,7 @@ define("test-fend/templates/test/index", ["exports"], function (exports) {
         morphs[1] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         return morphs;
       },
-      statements: [["block", "if", [["get", "model.length", ["loc", [null, [3, 10], [3, 22]]]]], [], 0, 1, ["loc", [null, [3, 4], [27, 11]]]], ["content", "outlet", ["loc", [null, [29, 4], [29, 14]]]]],
+      statements: [["block", "if", [["get", "model.length", ["loc", [null, [3, 10], [3, 22]]]]], [], 0, 1, ["loc", [null, [3, 4], [22, 11]]]], ["content", "outlet", ["loc", [null, [24, 4], [24, 14]]]]],
       locals: [],
       templates: [child0, child1]
     };
@@ -588,7 +656,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+17db2b09"});
+  require("test-fend/app")["default"].create({"name":"test-fend","version":"0.0.0+307755de"});
 }
 
 /* jshint ignore:end */

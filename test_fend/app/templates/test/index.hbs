@@ -13,12 +13,7 @@
     </thead>
     <tbody>
     	{{#each model as |test index|}}
-    		<tr>
-    			<td>{{index}}</td>
-    			<td>{{test.title}}</td>
-    			<td>{{test.text}}</td>
-    			<td><button {{action 'deletePrice' test.id}} type="submit" class="btn btn-danger btn-xs">Удалить</button></td>
-    		</tr>
+    	      {{table-item item=test index=index model=model}}
     	{{/each}}
     </tbody>
     </table>

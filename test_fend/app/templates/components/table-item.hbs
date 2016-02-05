@@ -1,0 +1,5 @@
+    			<td>{{index}}</td>
+    			<td>{{item.title}}</td>
+    			<td>{{item.text}}</td>
+    			<td><button {{action 'deleteItem' item.id}} type="submit" class="btn btn-danger btn-xs">Удалить</button></td>
+{{yield}}

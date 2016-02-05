@@ -13,9 +13,32 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('books')->delete();
         $bookArray = array(['title' => 'Золотая рыбка',
-            'text' => 'ФСБ РФ проводит масштабную операцию на территории '],
-            ['title' => 'Ревизок',
-                'text' => 'Корм проводит масштабную операцию на территории ']);
+            'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. '],
+            ['title' => 'Золотая рыбка',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Ревизор',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Война и Мир',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Идиот',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Преступление и наказание',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Тихий дон',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Мастер и маргарита',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'На дне',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Герой нашего времени',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.'],
+            ['title' => 'Мы',
+                'text' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.']);
+
+        for($i=0;$i<6000;$i++){
+            $bookArray[]=$bookArray[0];
+        }
+
         DB::table('books')->insert($bookArray);
     }
 }

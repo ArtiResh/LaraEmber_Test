@@ -13,7 +13,7 @@
 
 Route::group(['prefix' => 'api'], function() {
     Route::resource('tests', 'IndexController@index');
-//    Route::post('test', 'IndexController@store');
+    Route::post('tests/{id}', 'IndexController@delete');
 //    Route::get('test/{id}', 'IndexController@show');
 //    Route::put('test/{id}', 'IndexController@update');
 });
